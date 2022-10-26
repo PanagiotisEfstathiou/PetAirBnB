@@ -3,10 +3,7 @@ package com.edu.petairbnb.model;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -24,17 +21,18 @@ public class Booking extends BaseModel{
     private Date date;
 
     @OneToMany
-    @Column
+    @Column(nullable = false)
     @NotNull
     private List<Animal> pets;
 
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     @NotNull
     private Account customer;
 
+
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     @NotNull
     private Carer carer;
 }
