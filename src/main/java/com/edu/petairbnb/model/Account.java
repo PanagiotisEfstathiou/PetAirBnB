@@ -4,9 +4,7 @@ package com.edu.petairbnb.model;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
 @Setter
@@ -38,5 +36,7 @@ public class Account extends BaseModel{
     @Column(length = 20, nullable = false)
     private List<String> reviews;
 
-
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column
+    private List<Animal> petsOwned;
 }
