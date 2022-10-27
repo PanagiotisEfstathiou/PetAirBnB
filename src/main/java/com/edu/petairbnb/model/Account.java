@@ -1,10 +1,12 @@
 package com.edu.petairbnb.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,6 +36,7 @@ public class Account extends BaseModel{
 
     @Column(length = 20, nullable = false)
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @ElementCollection
