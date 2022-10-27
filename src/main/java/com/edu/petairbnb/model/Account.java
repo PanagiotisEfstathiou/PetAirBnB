@@ -14,6 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @ToString(callSuper = true)
+@Table(name = "ACCOUNTS")
+@SequenceGenerator(name = "idGenerator", sequenceName = "ACCOUNT_SEQ", initialValue = 1, allocationSize = 1)
 public class Account extends BaseModel{
 
     @Column(length = 20, nullable = false)
