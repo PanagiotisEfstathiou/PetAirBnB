@@ -31,8 +31,8 @@ public class Booking extends BaseModel{
     private Account customer;
 
 
-    @OneToOne
-    @JoinColumn(nullable = false)
-    @NotNull
-    private Carer carer;
+//    @OneToOne
+//    @JoinColumn(nullable = false)
+//    @NotNull
+//    private Carer carer;
 }
