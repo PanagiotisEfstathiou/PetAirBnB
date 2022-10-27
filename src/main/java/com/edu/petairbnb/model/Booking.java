@@ -14,6 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @ToString(callSuper = true)
+@Table(name = "BOOKINGS")
+@SequenceGenerator(name = "idGenerator", sequenceName = "BOOKING_SEQ", initialValue = 1, allocationSize = 1)
 public class Booking extends BaseModel{
 
     @Column(length = 20, nullable = false)
