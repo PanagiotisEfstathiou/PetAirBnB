@@ -2,10 +2,7 @@ package com.edu.petairbnb.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Setter
 @Getter
@@ -13,12 +10,15 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "ANIMALS")
+@SequenceGenerator(name = "idGenerator", sequenceName = "ANIMAL_SEQ", initialValue = 1, allocationSize = 1)
 public class Animal extends BaseModel {
 
     @JoinColumn(nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Account owner;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AnimalType animalType;
 
