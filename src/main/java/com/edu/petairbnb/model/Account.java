@@ -1,8 +1,10 @@
 package com.edu.petairbnb.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(callSuper = true)
+@ToString
 @Table(name = "ACCOUNTS")
 @SequenceGenerator(name = "idGenerator", sequenceName = "ACCOUNT_SEQ", initialValue = 1, allocationSize = 1)
 public class Account extends BaseModel{
@@ -38,6 +40,7 @@ public class Account extends BaseModel{
     @Column(length = 20, nullable = false)
     private List<String> reviews;
 
+    @JsonManagedReference("owner")
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Column
     private List<Animal> petsOwned;
