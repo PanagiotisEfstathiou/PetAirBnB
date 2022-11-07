@@ -5,4 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface BookingService extends BaseService<Booking> {
+
+    Booking bookingHistory(Long id);
 }

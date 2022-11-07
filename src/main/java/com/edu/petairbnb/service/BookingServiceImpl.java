@@ -16,4 +16,10 @@ public class BookingServiceImpl extends BaseServiceImpl<Booking> implements Book
     public JpaRepository<Booking, Long> getRepository() {
         return bookingRepository;
     }
+
+    @Override
+    public Booking bookingHistory(Long id) {
+        Booking booking = bookingRepository.bookingHistory(id);
+        return booking;
+    }
 }
