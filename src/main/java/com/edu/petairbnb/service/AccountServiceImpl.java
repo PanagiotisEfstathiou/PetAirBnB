@@ -1,6 +1,7 @@
 package com.edu.petairbnb.service;
 
 import com.edu.petairbnb.model.Account;
+import com.edu.petairbnb.model.Expertise;
 import com.edu.petairbnb.repository.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,9 @@ public class AccountServiceImpl extends BaseServiceImpl<Account> implements Acco
     private AccountRepository accountRepository;
     @Override
     public JpaRepository<Account, Long> getRepository() {return accountRepository;}
+
+    @Override
+    public Account findByExpertise(Expertise exp) {
+        return accountRepository.findByExpertise(exp);
+    }
 }
