@@ -5,11 +5,9 @@ import com.edu.petairbnb.model.Booking;
 import com.edu.petairbnb.service.BaseService;
 import com.edu.petairbnb.service.BookingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -28,5 +26,12 @@ public class BookingController extends AbstractController<Booking> {
     public List<Booking> getBookings(){
         return this.bookingService.findAll();
     }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("get/{id}")
+    public Booking bookingHistory(@PathVariable Long id){
+        return bookingService.bookingHistory(id);
+    }
+
 
 }
