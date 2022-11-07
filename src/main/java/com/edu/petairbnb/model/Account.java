@@ -1,6 +1,7 @@
 package com.edu.petairbnb.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,11 +41,21 @@ public class Account extends BaseModel{
     private String password;
 
     @ElementCollection
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = true)
     private List<String> reviews;
 
-    @JsonManagedReference("owner")
+    @JsonBackReference("owner")
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Column
+    @Column(nullable = true)
     private List<Animal> petsOwned;
+
+    @Column(nullable = true)
+    @ElementCollection
+    private List<String> rules;
+
+
+    @Column(nullable = true)
+    private Expertise expertise;
+
+
 }
