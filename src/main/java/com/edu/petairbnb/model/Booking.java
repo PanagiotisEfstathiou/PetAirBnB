@@ -27,14 +27,14 @@ public class Booking extends BaseModel{
     @NotNull
     private List<Animal> pets;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(nullable = false)
     @NotNull
     private Account customer;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @NotNull
+    private Account carer;
 
-//    @OneToOne
-//    @JoinColumn(nullable = false)
-//    @NotNull
-//    private Carer carer;
 }
