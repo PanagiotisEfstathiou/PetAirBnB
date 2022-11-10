@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+//hffsdfxwsvc
 public abstract class BaseComponent {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 
