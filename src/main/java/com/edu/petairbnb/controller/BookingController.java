@@ -1,13 +1,11 @@
 package com.edu.petairbnb.controller;
 
-import com.edu.petairbnb.model.Account;
 import com.edu.petairbnb.model.Booking;
 import com.edu.petairbnb.service.BaseService;
 import com.edu.petairbnb.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
