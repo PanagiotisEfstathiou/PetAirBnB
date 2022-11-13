@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,8 +19,8 @@ public class Animal extends BaseModel {
 
     @JsonManagedReference("petsOwned")
     @JoinColumn(nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Account owner;
+    @ManyToOne
+    private Owner owner;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -33,4 +34,9 @@ public class Animal extends BaseModel {
 
     @Column
     private String comments;
+
+    @OneToMany(mappedBy = "pet")
+    @JsonBackReference("pets")
+    @Column(nullable = true)
+    private List<Booking> pastBookings;
 }
