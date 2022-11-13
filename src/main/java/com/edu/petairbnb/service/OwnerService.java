@@ -1,11 +1,10 @@
 package com.edu.petairbnb.service;
 
-import com.edu.petairbnb.model.Account;
-import com.edu.petairbnb.model.Expertise;
+import com.edu.petairbnb.model.Owner;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface AccountService extends BaseService<Account>{
+public interface OwnerService extends BaseService<Owner>{
     //getAvailableCarers(Boolean isAvailable)
         //Add a boolean attribute in account class and get all accounts where is true
     //getAccountByNumOfReviews()
@@ -18,5 +17,5 @@ public interface AccountService extends BaseService<Account>{
             //order by account_id asc
     //getPetHistory(ID)
         //Maybe this must be implemented in the booking service. booking will keep a snapshot of everything that is associated in a booking
-    Account findByExpertise(Expertise exp);
+
 }
