@@ -1,5 +1,7 @@
 package com.edu.petairbnb.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -22,19 +24,21 @@ public class Booking extends BaseModel{
     @NotNull
     private Date date;
 
-    @OneToMany
-    @Column(nullable = false)
-    @NotNull
-    private List<Animal> pets;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference("pastBookings")
+    @JoinColumn(nullable = false)
+    private Animal pet;
 
     @ManyToOne
+    @JsonManagedReference("pastBookings")
     @JoinColumn(nullable = false)
     @NotNull
-    private Account customer;
+    private Owner customer;
 
     @ManyToOne
+    @JsonManagedReference("pastBookings")
     @JoinColumn(nullable = false)
     @NotNull
-    private Account carer;
+    private Carer carer;
 
 }
