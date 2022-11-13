@@ -2,11 +2,12 @@ package com.edu.petairbnb.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.springframework.context.annotation.Lazy;
 
 
 import javax.persistence.*;
@@ -19,9 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @ToString
-@Table(name = "ACCOUNTS")
-@SequenceGenerator(name = "idGenerator", sequenceName = "ACCOUNT_SEQ", initialValue = 1, allocationSize = 1)
-public class Account extends BaseModel{
+@Table(name = "OWNERS")
+@SequenceGenerator(name = "idGenerator", sequenceName = "OWNER_SEQ", initialValue = 1, allocationSize = 1)
+public class Owner extends BaseModel{
 
     @Column(length = 20, nullable = false)
     @NotNull
@@ -32,6 +33,7 @@ public class Account extends BaseModel{
     private String lastName;
 
     @Column(length = 50, nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotNull
     private String email;
 
@@ -40,22 +42,22 @@ public class Account extends BaseModel{
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    @ElementCollection
-    @Column(length = 20, nullable = true)
-    private List<String> reviews;
-
     @JsonBackReference("owner")
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Column(nullable = true)
     private List<Animal> petsOwned;
 
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Column(nullable = true)
-    @ElementCollection
-    private List<String> rules;
+    @JsonBackReference("author")
+    private List<Review> reviewsWritten;
+
+    @OneToMany
+    @JsonBackReference("customer")
+    private List<Booking> pastBookings;
 
 
-    @Column(nullable = true)
-    private Expertise expertise;
 
 
 }
