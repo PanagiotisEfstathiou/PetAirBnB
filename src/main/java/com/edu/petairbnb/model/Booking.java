@@ -24,19 +24,16 @@ public class Booking extends BaseModel{
     @NotNull
     private Date date;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonManagedReference("pastBookings")
-    @JoinColumn(nullable = false)
     private Animal pet;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonManagedReference("pastBookings")
-    @JoinColumn(nullable = false)
     @NotNull
     private Owner customer;
 
     @ManyToOne
-    @JsonManagedReference("pastBookings")
     @JoinColumn(nullable = false)
     @NotNull
     private Carer carer;

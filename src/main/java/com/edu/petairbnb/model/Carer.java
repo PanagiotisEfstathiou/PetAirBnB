@@ -53,8 +53,7 @@ public class Carer extends BaseModel {
     @Column(nullable = true)
     private Expertise expertise;
 
-    @Column
-    @JsonBackReference("carer")
+
     @OneToMany
     private List<Booking> pastBookings;
 
