@@ -2,12 +2,10 @@ package com.edu.petairbnb.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.springframework.context.annotation.Lazy;
+
 
 
 import javax.persistence.*;
@@ -31,7 +29,7 @@ public class Owner extends BaseModel{
     @Column(length = 20, nullable = false)
     @NotNull
     private String lastName;
-
+//test comment
     @Column(length = 50, nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotNull
