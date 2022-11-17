@@ -56,6 +56,7 @@ public class Owner extends BaseModel{
     @OneToMany
     @JsonBackReference("owner")
     private List<Booking> pastBookings;
+    /////maple syrup
 
 
 
