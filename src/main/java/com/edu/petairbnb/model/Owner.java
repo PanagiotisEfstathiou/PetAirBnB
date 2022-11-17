@@ -57,7 +57,7 @@ public class Owner extends BaseModel{
     @JsonBackReference("owner")
     private List<Booking> pastBookings;
 
-
+    //Fotis Test Comment
 
 
 }
