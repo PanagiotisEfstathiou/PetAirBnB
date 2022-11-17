@@ -47,12 +47,14 @@ public class Carer extends BaseModel {
 
     //rules will become an enum and the app will have a standard set of rules
     @Column(nullable = true)
-    @ElementCollection
-    private List<String> rules;
+    @Enumerated
+    private Rules rules;
 
     @Column(nullable = true)
     private Expertise expertise;
 
+    @Column(nullable = true)
+    private Boolean available;
 
     @OneToMany
     private List<Booking> pastBookings;
