@@ -25,7 +25,7 @@ public class Owner extends BaseModel{
     @Column(length = 20, nullable = false)
     @NotNull
     private String firstName;
-
+//fddf
     @Column(length = 20, nullable = false)
     @NotNull
     private String lastName;
